@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script
+            src="https://code.jquery.com/jquery-2.2.4.min.js"
+            integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+            crossorigin="anonymous"></script>
+</head>
+<body>
+    <h1>Proxy for posting to Eloqua form using AJAX</h1>
+    <h2>Enable CORS in Express.js & node.js</h2>
+    <button onclick="sendData()">Click to Test</button>
+
+    <script type="text/javascript">
+        var dataString = 'elqFormName=someForm&elqSiteID=xxxxxxx&emailAddress=testingnode@test.com';
+
+        function sendData(){
+            $.ajax({
+                type: "POST",
+                url: "/",
+                data: dataString
+            }).done(function(res){
+                console.log(res);
+            });
+        }
+
+    </script>
+
+</body>
+</html>
