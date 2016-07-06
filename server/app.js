@@ -7,13 +7,18 @@ var request = require('request');
 app.set('port', process.env.PORT || 5000);
 
 app.use(function(req, res, next){
-    res.header('Access-Control-Allow-Origin', '*');
-    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-    next();
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+    return next();
 });
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({expanded: true}));
+
+app.get('/', function(req, res){
+    app.send('Hello!');
+});
+
 
 app.post('/', function(req, res, next){
     console.log(req.body);
