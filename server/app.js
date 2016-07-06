@@ -3,7 +3,6 @@ var app = express();
 var path = require('path');
 var bodyParser = require('body-parser');
 var request = require('request');
-//var index = require('./index.js');
 
 app.use(function(req, res, next){
     res.header('Access-Control-Allow-Origin', '*');
