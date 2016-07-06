@@ -3,6 +3,7 @@ var app = express();
 var path = require('path');
 var bodyParser = require('body-parser');
 var request = require('request');
+//var index = require('./index.js');
 
 app.use(function(req, res, next){
     res.header('Access-Control-Allow-Origin', '*');
@@ -15,6 +16,8 @@ app.set('port', process.env.PORT || 5000);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({expanded: true}));
 
+app.use('/', index);
+
 app.post('/', function(req, res, next){
     console.log(req.body);
     var postData = req.body;
@@ -23,17 +26,17 @@ app.post('/', function(req, res, next){
 
     request.post(url, {form:postData},
         function (error, response, body) {
-            if (!error && response.statusCode == 200) {
-                console.log(body);
-                res.send('success', response);
+            if (error){
+                console.log('Error sending data', error);
+                res.send('Error sending data', error);
+            } else if (!error && response.statusCode == 200){
+                res.send('Form submission successful!');
+            } else {
+                console.log(response);
+                res.send(response);
             }
         }
     );
-});
-
-app.get('/*', function(req, res){
-    var file = req.params[0] || "index.html";
-    res.sendFile(path.join(__dirname, "../", file));
 });
 
 app.listen(app.get('port'), function(){

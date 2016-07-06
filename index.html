@@ -13,16 +13,28 @@
     <h2>Enable CORS in Express.js & node.js</h2>
     <button onclick="sendData()">Click to Test</button>
 
-    <script type="text/javascript">
-        var dataString = 'elqFormName=someForm&elqSiteID=xxxxxxx&emailAddress=testingnode@test.com';
+    <form>
+        <input type="hidden" name="elqFormName" value="testProxy" />
+        <input type="hidden" name="elqSiteID" value="1684" />
+        <input type="text" name="emailAddress" />
+        <input type="submit" value="Submit Data"/>
+    </form>
 
-        function sendData(){
+    <script type="text/javascript">
+
+        $('form').on('submit', function(e){
+            e.preventDefault();
+            var dataString = $(this).serialize();
+            sendData(dataString);
+        });
+
+        function sendData(dataString){
             $.ajax({
                 type: "POST",
                 url: "/",
                 data: dataString
-            }).done(function(res){
-                console.log(res);
+            }).done(function(response){
+                console.log(response);
             });
         }
 
