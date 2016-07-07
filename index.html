@@ -11,12 +11,33 @@
 <body>
     <h1>Proxy for posting to Eloqua form using AJAX</h1>
     <h2>Enable CORS in Express.js & node.js</h2>
-    <button onclick="sendData()">Click to Test</button>
+    <!--<button onclick="sendData()">Click to Test</button>-->
 
     <form>
-        <input type="hidden" name="elqFormName" value="xxxxxxx" />
-        <input type="hidden" name="elqSiteID" value="xxxxxxx" />
-        <input type="text" name="xxxxxxxxx" />
+        <input type="hidden" name="elqFormName" value="xxxx" />
+        <input type="hidden" name="elqSiteID" value="xxxx" />
+        <div>
+            <label>Email</label>
+            <input type="text" name="emailAddress" />
+        </div>
+
+        <div>
+            <label>Customer Number</label>
+            <input type="text" name="customerNumber" />
+        </div>
+        <div>
+            <label>Order 1</label>
+            <input type="text" name="order1" />
+        </div>
+        <div>
+            <label>Order 2</label>
+            <input type="text" name="order2" />
+        </div>
+        <div>
+            <label>Order 3</label>
+            <input type="text" name="order3" />
+        </div>
+
         <input type="submit" value="Submit Data"/>
     </form>
 
